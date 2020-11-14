@@ -1,0 +1,6 @@
+com/test/hooks/Hooks.class
+com/test/pages/Navigatetopage.class
+com/test/StepDefinitions/MyStepdefs.class
+com/test/pages/BasePage.class
+TestRunner.class
+com/test/pages/HomePage.class
