@@ -66,7 +66,8 @@ public class HomePage{
     @FindBy(xpath="//*[@id=\"CodeForm\"]/div[2]/div[2]/div[5]/div/div/ul/li/div/div")
     WebElement nunitIcon;
 
-
+    @FindBy(xpath=" //*[@id=\"login-modal\"]/div/div/div[1]/button")
+    WebElement closeButton;
 
 
     public HomePage(WebDriver driver){
@@ -78,12 +79,11 @@ public class HomePage{
         System.out.println("Clicking on run button");
         runButton.click();
     }
-    public void verifyOutputWindow(){
+    public void verifyOutputWindow(String expectedText){
         System.out.println("Checking output window");
-        String expected=outputWindow.getText();
-        System.out.println(expected);
-        String actual="Hello World";
-        Assert.assertEquals(expected,actual);
+        String actual=outputWindow.getText();
+        System.out.println(actual);
+        Assert.assertEquals(expectedText,actual);
     }
 
      public void clickShareButton() throws InterruptedException, IOException, UnsupportedFlavorException {
@@ -92,7 +92,7 @@ public class HomePage{
          shareDialogueBox.click();
          String myText=driver.findElement(By.xpath("//*[@id=\"ShareLink\"]")).getAttribute("value");
          System.out.println("The share link Text is  " + myText);
-         Assert.assertTrue((myText.startsWith("https://dotnetfiddle.net/CsCons")));
+         Assert.assertTrue((myText.startsWith("https://dotnetfiddle.net/")));
      }
 
      public void clickOptionsButton() throws InterruptedException {
@@ -105,6 +105,7 @@ public class HomePage{
       saveButton.click();
       Thread.sleep(2000);
       Assert.assertTrue(loginPopUp.isDisplayed());
+      closeButton.click();
      }
 
      public void clickGettingStarted() throws InterruptedException {
@@ -129,26 +130,26 @@ public class HomePage{
          Assert.assertTrue(nunitIcon.isDisplayed());
      }
 
-    public void performAcion() throws InterruptedException, IOException, UnsupportedFlavorException {
-        String s="A";
-        if(s.equals("F")){
+    public void performAcion(String firstName) throws InterruptedException, IOException, UnsupportedFlavorException {
+        String s=firstName.substring(0,1);
+        System.out.println("The first name starts with "+s);
+        if(s.equalsIgnoreCase("F")||s.equalsIgnoreCase("G")||s.equalsIgnoreCase("H")||s.equalsIgnoreCase("I")||s.equalsIgnoreCase("J")||s.equalsIgnoreCase("K")){
             System.out.println("Clicking on share button");
             clickShareButton();
         }
-        if(s.equals("L")){
+        if(s.equalsIgnoreCase("L")||s.equalsIgnoreCase("M")||s.equalsIgnoreCase("N")||s.equalsIgnoreCase("O")||s.equalsIgnoreCase("P")){
             System.out.println("Clicking on < button");
             clickOptionsButton();
         }
-        if(s.equals("Q")){
+        if(s.equalsIgnoreCase("Q")||s.equalsIgnoreCase("R")||s.equalsIgnoreCase("S")||s.equalsIgnoreCase("T")||s.equalsIgnoreCase("U")){
             System.out.println("Clicking on save button");
             clickSaveButton();
         }
-        if(s.equals("V")){
+        if(s.equalsIgnoreCase("V")||s.equalsIgnoreCase("W")||s.equalsIgnoreCase("X")||s.equalsIgnoreCase("Y")||s.equalsIgnoreCase("Z")){
             System.out.println("Clicking on Getting started button");
          clickGettingStarted();
         }
-
-        if(s.equals("A")){
+        if(s.equalsIgnoreCase("A")||s.equalsIgnoreCase("B")||s.equalsIgnoreCase("C")||s.equalsIgnoreCase("D")||s.equalsIgnoreCase("E")){
             System.out.println("Clicking on select Nuget packages");
             selectNugetPackages();
         }
